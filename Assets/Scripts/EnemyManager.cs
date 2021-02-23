@@ -19,7 +19,9 @@ public class EnemyManager : MonoBehaviour
     private void SpawnEnemy() {
         GameObject enemy = Instantiate (enemyPrefab) as GameObject;
         float x = screenBounds.x;
-        float y = Mathf.Floor(Random.Range(-screenBounds.y + 1, screenBounds.y));
+        float lowerBound = (-screenBounds.y + 1) / 2;
+        float upperBound = screenBounds.y / 2;
+        float y = Mathf.Floor(Random.Range(lowerBound, upperBound)) * 2 ;
         Debug.Log("Spawning at (" + x + ", " + y +")");
         enemy.transform.position = new Vector2(x, y);
     }
