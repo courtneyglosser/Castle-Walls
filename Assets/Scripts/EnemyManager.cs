@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public int numberOfEnemies = 10;
+    private int currEnemies;
     
     private Vector2 screenBounds = new Vector2(-20, 7);
 
@@ -13,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currEnemies = numberOfEnemies;
         StartCoroutine(EnemyWave());
     }
 
@@ -27,7 +30,8 @@ public class EnemyManager : MonoBehaviour
     }
 
     IEnumerator EnemyWave() {
-        while (true) {
+
+        while (true && currEnemies-- > 0) {
             yield return new WaitForSeconds(waitTime);
             SpawnEnemy();
         }
