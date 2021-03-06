@@ -23,11 +23,24 @@ public class BulletManager : MonoBehaviour
         stoneInventory--;
     }
 
+    priavte bool IsSlingEmpty() {
+        bool rtn = true;
+
+        // Need to figure out logic so that we're not continuously loading
+        // bullets at the same spot.
+        if (true) {
+
+        }
+        return rtn;
+    }
+
     IEnumerator ManTheWalls() {
 
         while (true && stoneInventory > 0) {
-            yield return new WaitForSeconds(waitTime);
-            LoadSling();
+            if (IsSlingEmpty()) {
+                yield return new WaitForSeconds(waitTime);
+                LoadSling();
+            }
         }
     }
 
